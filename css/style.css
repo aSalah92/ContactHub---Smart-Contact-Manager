@@ -322,6 +322,10 @@
                     }
                 }
                 .saved-contacts-container{
+                    width: 100%;
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 25px;
                     .no-contacts-sign{
                         margin-top: 150px;
                         display: flex;
@@ -346,6 +350,142 @@
                             font-size: 12px;
                             font-weight: 100;
                             margin: 0;
+                            align-self: center;
+                        }
+                    }
+                    .saved-contact-box{
+                        background-color: white;
+                        width: calc(100% / 2);
+                        display: flex;
+                        flex-direction: column;
+                        box-shadow: 1px 1px 5px rgba(107, 107, 107, 0.4);
+                        border-radius: 15px;
+                        .name-number-box{
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            padding: 15px;
+                            .logo-box{
+                                background-color: var(--red);
+                                color: white;
+                                padding: 15px;
+                                border-radius: 15px;
+                            }
+                            .text-box{
+                                h4{
+                                    font-size: 15px;
+                                    font-weight: 700;
+                                }
+                                .number-box{
+                                    display: flex;
+                                    gap: 8px;
+                                    .logo-box{
+                                        background-color: rgb(206, 243, 255);
+                                        padding: 0 8px;
+                                        border-radius: 5px;
+                                        svg{
+                                            width: 10px;
+                                            color: var(--blue);
+                                        }
+                                    }
+                                    p{
+                                        margin: 0;
+                                        font-size: 12px;
+                                        margin-top: 5px;
+                                    }
+                                }
+                            }
+                        }
+                        .email-box{
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            padding: 0 15px;
+                            .logo-box{
+                                background-color: var(--lightBlueviolet);
+                                color: var(--bluevioletOne);
+                                padding: 8px 8px;
+                                border-radius: 5px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                svg{
+                                    width: 15px;
+                                }
+                            }
+                            p{
+                                margin-top: 15px;
+                                font-size: 14px;
+                            }
+                        }
+                        .address-box{
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            padding: 0 15px;
+                            .logo-box{
+                                background-color: var(--lightgreen);
+                                color: green;
+                                padding: 8px 11px;
+                                border-radius: 5px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                svg{
+                                    width: 10px;
+                                }
+                            }
+                            p{
+                                margin-top: 15px;
+                                font-size: 14px;
+                            }
+                        }
+                        .links-box{
+                            background-color: var(--offwhite);
+                            border-radius: 0 0 15px 15px;
+                            padding: 15px;
+                            display: flex;
+                            justify-content: space-between;
+                            .two-sides-links{
+                                display: flex;
+                                justify-content: space-between;
+                            }
+                            .contact-box{
+                                width: 15%;
+                                .call-box{
+                                    background-color: var(--lightgreen);
+                                    padding: 5px;
+                                    border-radius: 5px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    svg{
+                                        color: green;
+                                        width: 15px;
+                                    }
+                                }
+                                .msg-box{
+                                    background-color: var(--lightBlueviolet);
+                                    padding: 8px;
+                                    border-radius: 5px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    svg{
+                                        color: var(--bluevioletOne);
+                                        width: 15px;
+                                    }
+                                }
+                            }
+                            .defining-links{
+                                width: 40%;
+                                div{
+                                    svg{
+                                        width: 15px;
+                                        color: var(--grey);
+                                    }
+                                }
+                            }
                         }
                     }
                 }
