@@ -1,0 +1,239 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    svg{
+        width: 20px;
+    }
+    img{
+        width: 50px;
+    }
+}
+
+:root{
+    --bluevioletOne: rgb(125, 36, 253);
+    --bluevioletTwo: rgb(82, 56, 247);
+    --lightBlueviolet: rgb(237, 233, 254);
+    --blue: rgb(26, 102, 254);
+    --orangeOne: rgb(255, 125, 0);
+    --orangeTwo: rgb(255, 169, 0);
+    --red: rgb(239, 0, 45);
+    --darkgreen: rgb(26, 165, 118);
+    --lightgreen: rgb(208, 250, 229);
+    --grey: rgb(96, 103, 115);
+    --offwhite: rgb(241, 241, 241);
+}
+
+
+.whole-page{
+    background-color: var(--offwhite);
+    height: 100vh;
+    nav{
+        background-color: white;
+        .parent-nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            .logo-side{
+                display: flex;
+                align-items: start;
+                gap: 15px;
+                .logo-box{
+                    background-color: var(--bluevioletTwo);
+                    color: white;
+                    padding: 15px;
+                    border-radius: 15px;
+                    svg{
+                        width: 25px;
+                    }
+                }
+                .text-box{
+                    h1{
+                        margin: 0;
+                        font-size: 25px;
+                        font-weight: 500;
+                        span{
+                            color: var(--bluevioletTwo);
+                        }
+                    }
+                    p{
+                        font-size: 14px;
+                        color: var(--grey);
+                    }
+                }
+            }
+            .user-side{
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                button{
+                    background: linear-gradient(to right, var(--bluevioletOne), var(--bluevioletTwo));
+                    border-radius: 12px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    padding: 15px 40px;
+                    transition: 0.25s;
+
+                    &:hover{
+                        transform: translate(0, -4px);
+                        box-shadow: 0 5px 10px rgba(136, 45, 221, 0.4);
+                    }
+                }
+                .modal{
+                    .modal-dialog{
+                        height: 90% !important;
+                        .modal-content{
+                            height: 100%;
+                            border-radius: 15px;
+                            overflow: scroll;
+                            scrollbar-width: none;
+                            .modal-header{
+                                h1{
+                                    font-size: 20px;
+                                    font-weight: 700;
+                                }
+                                .exit-box{
+                                    margin-right: 15px;
+                                    height: fit-content !important;
+                                    padding: 2px 10px;
+                                    border-radius: 5px;
+                                    p{
+                                        margin: 0;
+                                        font-weight: 500;
+                                        color: var(--grey);
+                                    }
+                                    &:hover{
+                                        cursor: pointer;
+                                        background-color: var(--offwhite);
+                                    }
+                                    &:hover p{
+                                        color: black;
+                                    }
+                                }
+                            }
+                            .modal-body{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                .img-box{
+                                    background: linear-gradient(to right, rgb(77, 130, 247), var(--blue));
+                                    color: white;
+                                    padding: 30px;
+                                    border-radius: 50%;
+                                    svg{
+                                        width: 30px;
+                                    }
+                                }
+                                .label-photo-upload{
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 10px;
+                                    background-color: var(--offwhite);
+                                    padding: 5px 20px;
+                                    border-radius: 10px;
+                                    font-size: 15px;
+                                    color: var(--grey);
+                                    input{
+                                        display: none;
+                                    }
+                                    svg{
+                                        color: var(--grey);
+                                    }
+                                    &:hover{
+                                        cursor: pointer;
+                                        background-color: rgb(236, 236, 236);
+                                    }
+                                }
+                                label{
+                                    margin-top: 20px;
+                                    margin-bottom: 5px;
+                                    font-size: 15px;
+                                    font-weight: 500;
+                                }
+                                .form-control{
+                                    background-color: var(--offwhite);
+                                }
+                                .form-control:focus{
+                                    box-shadow: 0 0 1px 1px var(--bluevioletOne);
+                                }
+                                .check-box-container{
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 20px;
+                                    .check-box-inner{
+                                        input{
+                                            transform: scale(1.5);
+                                        }
+                                        label{
+                                            margin-left: 10px;
+                                            svg{
+                                                width: 15px;
+                                            }
+                                        }
+                                    }
+                                    .check-box-inner:first-child{
+                                        label{
+                                            svg{
+                                                color: var(--orangeOne);
+                                            }
+                                        }
+                                    }
+                                    .check-box-inner:last-child{
+                                        label{
+                                            svg{
+                                                color: var(--red);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .modal-footer{
+                                display: flex;
+                                flex-direction: row;
+                                flex-wrap: nowrap;
+                                gap: 10px;
+                                padding: 10px 30px 20px;
+                                .btn{
+                                    width: calc(100% / 2);
+                                    margin: 0;
+                                }
+                                .btn:first-child{
+                                    background-color: var(--offwhite);
+                                }
+                                .btn:last-child{
+                                    background-color: var(--bluevioletOne);
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+                .svg-box{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 18px;
+                    height: fit-content;
+                    border-radius: 15px;
+                    svg{
+                        width: 15px;
+                        color: var(--grey);
+                    }
+                    &:hover{
+                        cursor: pointer;
+                        background-color: var(--offwhite);
+                    }
+                    &:hover svg{
+                        color: black;
+                    }
+                }
+                img{
+                    border-radius: 15px;
+                }
+            }
+        }
+
+    }
+}
