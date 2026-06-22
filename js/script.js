@@ -56,17 +56,25 @@ let deletedContactIndex;
 // All functions
 
 function gettingData() {
-  if (localStorage.getItem("allContacts") === "") {
+  if (localStorage.getItem("allContacts") === "[]") {
     localStorage.removeItem("allContacts");
     localStorage.removeItem("favoriteContacts");
     localStorage.removeItem("emergencyContacts");
   }
   if (localStorage.getItem("allContacts") !== null) {
     allContacts = JSON.parse(localStorage.getItem("allContacts"));
-    favoriteContacts = JSON.parse(localStorage.getItem("favoriteContacts"));
-    emergencyContacts = JSON.parse(localStorage.getItem("emergencyContacts"));
+    localStorage.getItem("favoriteContacts") === null
+      ? (favoriteContacts = 0)
+      : (favoriteContacts = JSON.parse(
+          localStorage.getItem("favoriteContacts"),
+        ));
+    localStorage.getItem("emergencyContacts") === null
+      ? (emergencyContacts = 0)
+      : (emergencyContacts = JSON.parse(
+          localStorage.getItem("emergencyContacts"),
+        ));
     definingNumbers();
-    console.log(allContacts);
+
     noContactsMsg.classList.add("d-none");
     allContacts.forEach((ele) => {
       let HTMLNewContact = `
@@ -163,21 +171,18 @@ function definingNoSigns() {
     noContactsMsg.classList.remove("d-none");
   } else {
     noContactsMsg.classList.add("d-none");
-    console.log(noContactsMsg);
   }
 
   if (favoriteContacts === 0) {
     noFav.classList.remove("d-none");
   } else {
     noFav.classList.add("d-none");
-    console.log(noFav);
   }
 
   if (emergencyContacts === 0) {
     noEmergency.classList.remove("d-none");
   } else {
     noEmergency.classList.add("d-none");
-    console.log(noEmergency);
   }
 }
 
@@ -290,11 +295,12 @@ function addContact() {
           allContacts.length === 0
             ? noContactsMsg.classList.remove("d-none")
             : noContactsMsg.classList.add("d-none");
-          //emptying inputs
+
           savedContactsContainer.insertAdjacentHTML(
             "beforeend",
             HTMLNewContact,
           );
+          //emptying inputs
           fullName.value = "";
           phoneNumber.value = "";
           email.value = "";
@@ -381,13 +387,13 @@ function applyFav(id) {
             <div class="personal-box">
               <div class="logo-box"><svg class="svg-inline--fa fa-user" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg></div>
               <div class="name-number">
-                <h6>${newContact.fullName}</h6>
-                <p>${newContact.phoneNumber}</p>
+                <h6>${allContacts[currentContactIndex].fullName}</h6>
+                <p>${allContacts[currentContactIndex].phoneNumber}</p>
               </div>
             </div>
             <div class="dial-logo"><svg class="svg-inline--fa fa-phone" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path></svg></div>
           </div>`;
-    favBody.innerHTML += HTMLFavoriteContact;
+    favBody.insertAdjacentHTML("beforeend", HTMLFavoriteContact);
   } else {
     allContacts[currentContactIndex].favStatus = false;
     favoriteContacts--;
@@ -428,13 +434,13 @@ function applyEmergency(id) {
             <div class="personal-box">
               <div class="logo-box"><svg class="svg-inline--fa fa-user" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg></div>
               <div class="name-number">
-                <h6>${newContact.fullName}</h6>
-                <p>${newContact.phoneNumber}</p>
+                <h6>${allContacts[currentContactIndex].fullName}</h6>
+                <p>${allContacts[currentContactIndex].phoneNumber}</p>
               </div>
             </div>
             <div class="dial-logo"><svg class="svg-inline--fa fa-phone" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"></path></svg></div>
           </div>`;
-    emergencyBody.innerHTML += HTMLEmergencyContact;
+    emergencyBody.insertAdjacentHTML("beforeend", HTMLEmergencyContact);
   } else {
     allContacts[currentContactIndex].emergencyStatus = false;
     emergencyContacts--;
@@ -461,14 +467,17 @@ function delMsg(id) {
 // functionality of deletion
 function deleteContact() {
   if (allContacts[deletedContactIndex].favStatus === true) {
-    console.log(deletedContact.id);
     favBody.querySelector(`#fav-${deletedContact.id}`).remove();
     favoriteContacts--;
+    localStorage.setItem("favoriteContacts", JSON.stringify(favoriteContacts));
   }
   if (allContacts[deletedContactIndex].emergencyStatus === true) {
-    console.log(deletedContact.id);
     emergencyBody.querySelector(`#emergency-${deletedContact.id}`).remove();
     emergencyContacts--;
+    localStorage.setItem(
+      "emergencyContacts",
+      JSON.stringify(emergencyContacts),
+    );
   }
   allContacts.splice(deletedContactIndex, 1);
   definingNumbers();
