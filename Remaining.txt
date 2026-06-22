@@ -1,0 +1,3 @@
+taking data from localstorge and put it on the html page
+edit
+search
