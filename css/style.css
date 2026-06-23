@@ -260,7 +260,7 @@
                                 .btn:first-child{
                                     background-color: var(--offwhite);
                                 }
-                                .btn:last-child{
+                                #save-btn, #edit-btn{
                                     background-color: var(--bluevioletOne);
                                     color: white;
                                 }
@@ -298,8 +298,33 @@
         align-items: center;
         flex-direction: column;
         position: relative;
+        .update-msg{
+            position: absolute; top: 200px;
+            .modal-dialog{
+                .modal-content{
+                    .sign-box{
+                        border: 4px solid lightgreen;
+                        padding: 15px 40px;
+                        border-radius: 50%;
+                        font-size: 45px;
+                        font-weight: 700;
+                        color: lightgreen;
+                        margin-bottom: 25px;
+                    }
+                    h1{
+                        font-size: 35px;
+                        color: rgb(75, 75, 75);
+                    }
+                    p{
+                        text-align: center;
+                        font-style: 20px;
+                        font-weight: normal;
+                    }
+                }
+            }
+        }
         .del-msg{
-            position: absolute; top: 30%;
+            position: absolute; top: 200px;
             .modal-dialog{
                 .modal-content{
                     .sign-box{
