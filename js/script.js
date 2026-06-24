@@ -507,7 +507,7 @@ function editContact(id) {
     : (favCheckbox.checked = false);
   editedContactArr.emergencyStatus
     ? (emergencyCheckbox.checked = true)
-    : emergencyCheckbox.checked === false;
+    : (emergencyCheckbox.checked = false);
 }
 
 function doEditingToContact() {
@@ -519,8 +519,17 @@ function doEditingToContact() {
   editedContact.querySelector("#contact-number").textContent =
     phoneNumber.value;
   editedContact.querySelector("#contact-email").textContent = email.value;
+  email.value === ""
+    ? editedContact.querySelector(".email-box").classList.add("d-none")
+    : editedContact.querySelector(".email-box").classList.remove("d-none");
   editedContact.querySelector("#contact-address").textContent = address.value;
+  address.value === ""
+    ? editedContact.querySelector(".address-box").classList.add("d-none")
+    : editedContact.querySelector(".address-box").classList.remove("d-none");
   editedContact.querySelector("#contact-group").textContent = groupSelect.value;
+  groupSelect.value === "" || groupSelect.value === "Select a group"
+    ? editedContact.querySelector(".group-box").classList.add("d-none")
+    : editedContact.querySelector(".group-box").classList.remove("d-none");
   editedContact.id = `contact${phoneNumber.value}`;
   editedContact.querySelector(".fav-box").id = `fav-${phoneNumber.value}`;
   editedContact.querySelector(".emergency-box").id =
@@ -636,9 +645,43 @@ function deleteContact() {
   deletedContact.remove();
 }
 
+function searchContact() {
+  let searchValue = searchBar.value;
+  let savedContacts = Array.from(savedContactsContainer.children);
+  savedContacts.forEach((ele) => {
+    if (searchValue === "") {
+      ele.id === "no-contacts"
+        ? ele.classList.add("d-none")
+        : ele.classList.remove("d-none");
+    } else {
+      if (ele.id !== "no-contacts") {
+        ele.classList.add("d-none");
+        let cName = ele.querySelector("#contact-name");
+        let cNumber = ele.querySelector("#contact-number");
+        let cEmail = ele.querySelector("#contact-email");
+        let cAddress = ele.querySelector("#contact-address");
+
+        if (
+          cName.textContent.toLowerCase().includes(searchValue.toLowerCase()) ||
+          cNumber.textContent
+            .toLowerCase()
+            .includes(searchValue.toLowerCase()) ||
+          cEmail.textContent
+            .toLowerCase()
+            .includes(searchValue.toLowerCase()) ||
+          cAddress.textContent.toLowerCase().includes(searchValue.toLowerCase())
+        ) {
+          ele.classList.remove("d-none");
+        }
+      }
+    }
+  });
+}
+
 saveContact.addEventListener("click", addContact);
 okErrorBtn.addEventListener("click", errorMsgDisappearing);
 addContactBtn.addEventListener("click", addNewContactBtn);
 editContactBtn.addEventListener("click", doEditingToContact);
+searchBar.addEventListener("input", searchContact);
 definingNoSigns();
 gettingData();
