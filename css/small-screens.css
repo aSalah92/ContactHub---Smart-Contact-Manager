@@ -1,0 +1,34 @@
+@media screen and (max-width: 640px) {
+    .parent-nav{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .numbers-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100% !important;
+        .numbers-boxes{
+            width: 90% !important;
+        }
+    }
+  .contacts-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 800px;
+    .saved-contacts-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .saved-contact-box{
+            width: 100% !important;
+        }
+    }
+    .favorites-emergency-container{
+        width: 75% !important;
+    }
+  }
+}
